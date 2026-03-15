@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Материалы к Уроку Как создать IT-Стартап за $50,000 БЕЗ КОДА | Мастодонт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg1:#0c0a08;
+--bg2:#151210;
+--bg3:#1f1b17;
+--border:#2a2520;
+--border-hover:#3d362e;
+--text1:#f5f0e8;
+--text2:#a89e90;
+--text3:#6e6459;
+--accent1:#d4a853;
+--accent2:#f0c75e;
+--accent3:#c08b3f;
+--gradient1:linear-gradient(135deg,var(--accent1),var(--accent2));
+--gradient2:linear-gradient(135deg,var(--accent2),var(--accent3));
+--gradient-text:linear-gradient(135deg,var(--accent1) 0%,var(--accent2) 50%,var(--accent3) 100%);
+--radius:16px;
+--radius-sm:10px;
+--max-w:1120px;
+--font-display:'Unbounded',sans-serif;
+--font-body:'Manrope',sans-serif;
+--font-mono:'Fira Code',monospace;
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+font-family:var(--font-body);
+background:var(--bg1);
+color:var(--text1);
+line-height:1.7;
+font-size:clamp(15px,1.1vw,17px);
+min-height:100vh;
+overflow-x:hidden;
+}
+body::before{
+content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+background:
+radial-gradient(ellipse 1000px 700px at 15% 10%,rgba(212,168,83,0.07) 0%,transparent 60%),
+radial-gradient(ellipse 800px 600px at 85% 75%,rgba(240,199,94,0.07) 0%,transparent 60%),
+radial-gradient(ellipse 500px 400px at 50% 40%,rgba(192,139,63,0.04) 0%,transparent 60%);
+}
+body::after{
+content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.025;
+background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--bg1)}
+::-webkit-scrollbar-thumb{background:var(--gradient1);border-radius:4px}
+
+.nav{
+position:sticky;top:0;z-index:1000;
+background:rgba(7,8,15,0.88);
+backdrop-filter:blur(24px);
+border-bottom:2px solid transparent;
+border-image:linear-gradient(90deg,transparent 0%,var(--accent1) 25%,var(--accent2) 50%,var(--accent3) 75%,transparent 100%) 1;
+}
+.nav-inner{
+max-width:var(--max-w);margin:0 auto;
+padding:0 clamp(16px,3vw,32px);
+display:flex;align-items:center;justify-content:space-between;
+height:clamp(56px,7vw,68px);
+}
+.nav-brand{
+font-family:var(--font-display);font-weight:800;
+font-size:clamp(14px,1.3vw,18px);letter-spacing:3px;
+background:var(--gradient-text);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.nav-links{display:flex;gap:clamp(12px,2vw,24px)}
+.nav-links a{
+font-family:var(--font-body);font-size:clamp(12px,0.9vw,14px);
+font-weight:600;color:var(--text3);text-decoration:none;
+transition:color 0.3s;letter-spacing:0.3px;
+}
+.nav-links a:hover{color:var(--accent1)}
+
+.container{
+max-width:var(--max-w);margin:0 auto;
+padding:0 clamp(16px,3vw,32px);
+position:relative;z-index:1;
+}
+
+.hero{
+padding:clamp(48px,8vw,100px) 0 clamp(32px,5vw,60px);
+text-align:center;
+}
+.hero-badge{
+display:inline-block;font-family:var(--font-mono);
+font-size:clamp(10px,0.8vw,12px);font-weight:600;
+letter-spacing:3px;color:var(--accent1);
+border:1px solid rgba(212,168,83,0.3);
+padding:6px 20px;border-radius:100px;
+margin-bottom:clamp(20px,3vw,32px);
+background:rgba(212,168,83,0.05);
+animation:fadeInDown 0.8s ease-out;
+}
+.hero h1{
+font-family:var(--font-display);
+font-size:clamp(22px,3.5vw,48px);
+font-weight:800;line-height:1.15;
+margin-bottom:clamp(16px,2vw,24px);
+background:var(--gradient-text);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+animation:fadeInUp 0.8s ease-out 0.1s both;
+}
+.hero-sub{
+font-size:clamp(15px,1.3vw,20px);color:var(--text2);
+max-width:720px;margin:0 auto clamp(24px,3vw,40px);
+font-weight:300;animation:fadeInUp 0.8s ease-out 0.2s both;
+}
+.hero-search{
+display:inline-flex;align-items:center;gap:12px;
+background:var(--bg2);border:1px solid var(--border);
+border-radius:var(--radius-sm);
+padding:clamp(10px,1.2vw,14px) clamp(16px,2vw,24px);
+font-size:clamp(11px,0.85vw,14px);color:var(--text2);
+animation:fadeInUp 0.8s ease-out 0.3s both;cursor:default;
+}
+.hero-search span{color:var(--text3)}
+.hero-search .copy-sm{
+background:rgba(212,168,83,0.1);border:1px solid rgba(212,168,83,0.25);
+color:var(--accent1);padding:5px 14px;border-radius:6px;
+cursor:pointer;font-family:var(--font-mono);font-size:11px;
+font-weight:500;transition:all 0.3s;white-space:nowrap;
+}
+.hero-search .copy-sm:hover{
+background:rgba(212,168,83,0.2);border-color:var(--accent1);
+}
+
+.divider{
+height:2px;border:none;opacity:0.5;
+background:linear-gradient(90deg,transparent 0%,var(--accent1) 25%,var(--accent2) 50%,var(--accent3) 75%,transparent 100%);
+margin:clamp(32px,5vw,60px) 0;
+}
+
+.section-title{
+font-family:var(--font-display);
+font-size:clamp(18px,2vw,28px);font-weight:700;
+margin-bottom:clamp(20px,3vw,36px);color:var(--text1);
+display:flex;align-items:center;gap:12px;
+}
+.section-title .icon{
+font-size:clamp(20px,2.2vw,28px);
+filter:drop-shadow(0 0 8px rgba(212,168,83,0.4));
+}
+
+.learn-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
+gap:clamp(16px,2vw,24px);margin-bottom:clamp(8px,2vw,16px);
+}
+.learn-card{
+background:var(--bg2);border:1px solid var(--border);
+border-radius:var(--radius);padding:clamp(24px,2.5vw,32px);
+position:relative;overflow:hidden;
+transition:border-color 0.3s,transform 0.3s;
+}
+.learn-card::before{
+content:'';position:absolute;top:0;left:0;right:0;height:3px;
+background:var(--gradient1);
+}
+.learn-card:hover{border-color:var(--border-hover);transform:translateY(-2px)}
+.learn-card .card-icon{
+font-size:clamp(28px,3vw,36px);margin-bottom:clamp(12px,1.5vw,18px);display:block;
+}
+.learn-card p{color:var(--text2);font-size:clamp(14px,1vw,16px);font-weight:400;line-height:1.6}
+
+.tools-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
+gap:clamp(12px,1.5vw,18px);margin-bottom:clamp(8px,2vw,16px);
+}
+.tool-card{
+display:flex;align-items:center;gap:clamp(12px,1.5vw,16px);
+background:var(--bg2);border:1px solid var(--border);
+border-radius:var(--radius-sm);padding:clamp(14px,1.8vw,20px);
+transition:border-color 0.3s;text-decoration:none;
+}
+.tool-card:hover{border-color:var(--accent2)}
+.tool-icon{
+width:clamp(38px,3.8vw,44px);height:clamp(38px,3.8vw,44px);
+border-radius:10px;background:var(--bg3);
+display:flex;align-items:center;justify-content:center;
+font-size:clamp(16px,1.8vw,20px);flex-shrink:0;
+}
+.tool-info{flex:1;min-width:0}
+.tool-name{font-weight:700;font-size:clamp(13px,0.95vw,15px);color:var(--text1);margin-bottom:1px}
+.tool-desc{font-size:clamp(11px,0.75vw,12px);color:var(--text3)}
+.tool-badge{
+font-family:var(--font-mono);font-size:9px;font-weight:600;
+letter-spacing:1px;padding:3px 8px;border-radius:100px;
+background:rgba(212,168,83,0.1);color:var(--accent1);
+border:1px solid rgba(212,168,83,0.2);white-space:nowrap;flex-shrink:0;
+}
+
+.prompt-intro{
+font-size:clamp(15px,1.1vw,18px);color:var(--text2);
+margin-bottom:clamp(20px,3vw,32px);line-height:1.7;max-width:820px;
+}
+.prompt-block{
+background:var(--bg2);border:1px solid var(--border);
+border-radius:var(--radius);overflow:hidden;position:relative;
+box-shadow:0 0 60px rgba(212,168,83,0.06),0 0 120px rgba(240,199,94,0.03);
+}
+.prompt-block::after{
+content:'';position:absolute;top:0;left:0;bottom:0;width:4px;
+background:linear-gradient(180deg,var(--accent1),var(--accent2),var(--accent3));
+}
+.prompt-header{
+display:flex;align-items:center;justify-content:space-between;
+padding:clamp(16px,2vw,22px) clamp(20px,2.5vw,28px);
+background:var(--bg3);border-bottom:1px solid var(--border);
+flex-wrap:wrap;gap:12px;
+}
+.prompt-label{
+font-family:var(--font-display);font-size:clamp(13px,1vw,16px);
+font-weight:600;color:var(--text1);display:flex;align-items:center;gap:8px;
+}
+.copy-btn{
+font-family:var(--font-mono);font-size:clamp(11px,0.8vw,13px);
+font-weight:500;padding:8px 20px;border-radius:8px;
+border:1px solid rgba(212,168,83,0.3);background:rgba(212,168,83,0.08);
+color:var(--accent1);cursor:pointer;transition:all 0.3s;
+display:flex;align-items:center;gap:6px;white-space:nowrap;
+}
+.copy-btn:hover{
+background:rgba(212,168,83,0.15);border-color:var(--accent1);
+box-shadow:0 0 20px rgba(212,168,83,0.15);
+}
+.copy-btn.copied{background:rgba(212,168,83,0.2);border-color:var(--accent1);color:#fff}
+.prompt-content{
+padding:clamp(20px,2.5vw,28px);
+font-family:var(--font-mono);font-size:clamp(11.5px,0.82vw,13.5px);
+line-height:1.75;color:var(--text2);
+white-space:pre-wrap;word-break:break-word;overflow-x:auto;
+max-height:400px;overflow-y:hidden;
+position:relative;
+transition:max-height 0.5s ease;
+}
+.prompt-content.expanded{max-height:none}
+.prompt-content:not(.expanded)::after{
+content:'';position:absolute;bottom:0;left:0;right:0;height:120px;
+background:linear-gradient(transparent,var(--bg2));
+pointer-events:none;
+}
+.prompt-toggle{
+display:flex;align-items:center;justify-content:center;
+padding:14px;border:none;border-top:1px solid var(--border);
+background:var(--bg3);color:var(--accent1);
+font-family:var(--font-mono);font-size:clamp(12px,0.9vw,14px);
+font-weight:500;cursor:pointer;transition:all 0.3s;gap:8px;
+width:100%;
+}
+.prompt-toggle:hover{background:var(--bg2);color:var(--accent2)}
+
+.links-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
+gap:clamp(12px,1.5vw,18px);margin-bottom:clamp(8px,2vw,16px);
+}
+.link-card{
+display:flex;align-items:center;gap:clamp(12px,1.5vw,16px);
+background:var(--bg2);border:1px solid var(--border);
+border-radius:var(--radius-sm);padding:clamp(16px,2vw,22px);
+text-decoration:none;transition:all 0.3s;
+}
+.link-card:hover{
+border-color:var(--accent2);transform:translateY(-2px);
+box-shadow:0 8px 30px rgba(240,199,94,0.1);
+}
+.link-icon{
+width:clamp(40px,4vw,48px);height:clamp(40px,4vw,48px);
+border-radius:10px;
+background:linear-gradient(135deg,rgba(212,168,83,0.1),rgba(240,199,94,0.1));
+display:flex;align-items:center;justify-content:center;
+font-size:clamp(18px,2vw,22px);flex-shrink:0;
+}
+.link-info{flex:1;min-width:0}
+.link-name{font-weight:700;font-size:clamp(13px,1vw,15px);color:var(--text1);margin-bottom:2px}
+.link-desc{font-size:clamp(11px,0.75vw,13px);color:var(--text3)}
+.link-badge{
+font-family:var(--font-mono);font-size:9px;font-weight:600;
+letter-spacing:1px;padding:3px 8px;border-radius:100px;
+background:rgba(240,199,94,0.1);color:var(--accent2);
+border:1px solid rgba(240,199,94,0.2);white-space:nowrap;flex-shrink:0;
+}
+
+.cta-block{
+background:var(--bg2);border:1px solid var(--border);
+border-radius:var(--radius);
+padding:clamp(28px,4vw,48px) clamp(24px,5vw,100px);
+display:flex;align-items:center;justify-content:space-between;
+gap:clamp(20px,3vw,40px);
+margin-bottom:clamp(40px,6vw,80px);
+animation:ctaGlow 3s ease-in-out infinite;
+}
+@keyframes ctaGlow{
+0%,100%{box-shadow:0 0 30px rgba(212,168,83,0.05),0 0 60px rgba(240,199,94,0.03)}
+50%{box-shadow:0 0 40px rgba(212,168,83,0.1),0 0 80px rgba(240,199,94,0.06)}
+}
+.cta-text{
+font-family:var(--font-display);font-size:clamp(16px,1.8vw,24px);
+font-weight:700;line-height:1.4;color:var(--text1);
+}
+.cta-text .grad{
+background:var(--gradient-text);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.cta-btn{
+font-family:var(--font-display);font-size:clamp(12px,1vw,14px);
+font-weight:600;padding:18px 40px;border-radius:var(--radius-sm);
+background:var(--gradient1);color:var(--bg1);
+text-decoration:none;white-space:nowrap;transition:all 0.3s;flex-shrink:0;
+}
+.cta-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 30px rgba(212,168,83,0.25);
+}
+
+.footer{
+text-align:center;padding:clamp(32px,5vw,48px) 0;
+border-top:1px solid var(--border);
+}
+.footer-brand{
+font-family:var(--font-display);font-weight:800;
+font-size:clamp(14px,1.3vw,18px);letter-spacing:3px;
+background:var(--gradient-text);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+margin-bottom:8px;
+}
+.footer-tagline{font-size:clamp(12px,0.9vw,14px);color:var(--text3);margin-bottom:16px}
+.footer-yt{
+font-family:var(--font-mono);font-size:clamp(11px,0.8vw,13px);
+color:var(--text3);cursor:pointer;transition:color 0.3s;border:none;background:none;
+}
+.footer-yt:hover{color:var(--accent1)}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:768px){
+.nav-links a{font-size:11px}
+.cta-block{flex-direction:column;text-align:center;padding:clamp(24px,5vw,36px) clamp(20px,4vw,32px)}
+.cta-btn{width:100%;text-align:center}
+.hero-search{flex-direction:column;text-align:center;gap:8px}
+}
+@media(max-width:480px){
+.nav-links{gap:8px}
+.nav-links a{font-size:10px}
+.prompt-header{flex-direction:column;align-items:flex-start}
+.tools-grid,.links-grid{grid-template-columns:1fr}
+}
+@media(min-width:2560px){.container{max-width:1200px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+<div class="nav-inner">
+<div class="nav-brand">МАСТОДОНТ</div>
+<div class="nav-links">
+<a href="#tools">Инструменты</a>
+<a href="#prompt">Промпт</a>
+<a href="#links">Ссылки</a>
+</div>
+</div>
+</nav>
+
+<div class="container">
+
+<section class="hero">
+<div class="hero-badge">МАТЕРИАЛЫ К УРОКУ</div>
+<h1>Как создать IT-Стартап за $50,000 БЕЗ КОДА (Google AntiGravity)</h1>
+<p class="hero-sub">Универсальный золотой промпт - замени текст в квадратных скобках на свою идею и получи Production-Ready проект</p>
+<div class="hero-search">
+<span>Ищи на YouTube:</span> Как создать IT-Стартап за $50,000 БЕЗ КОДА (Google AntiGravity)
+<button class="copy-sm" onclick="copyText('Как создать IT-Стартап за $50,000 БЕЗ КОДА (Google AntiGravity)',this)">Скопировать</button>
+</div>
+</section>
+
+<hr class="divider">
+
+<h2 class="section-title"><span class="icon">📋</span> Что ты научишься делать</h2>
+<div class="learn-grid">
+<div class="learn-card">
+<span class="card-icon">🚀</span>
+<p>Создать полноценный IT-стартап с нуля без написания кода руками</p>
+</div>
+<div class="learn-card">
+<span class="card-icon">🧬</span>
+<p>Использовать универсальный промпт для любого SaaS-проекта</p>
+</div>
+<div class="learn-card">
+<span class="card-icon">🌐</span>
+<p>Задеплоить проект на VPS с доменом за $3-5/мес</p>
+</div>
+</div>
+
+<hr class="divider">
+
+<section id="tools">
+<h2 class="section-title"><span class="icon">🛠️</span> Что понадобится</h2>
+<div class="tools-grid">
+<a href="https://antigravity.google/" target="_blank" class="tool-card">
+<div class="tool-icon">⚡</div>
+<div class="tool-info"><div class="tool-name">AntiGravity</div><div class="tool-desc">AI IDE от Google</div></div>
+<span class="tool-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://git-scm.com/download/win" target="_blank" class="tool-card">
+<div class="tool-icon">📦</div>
+<div class="tool-info"><div class="tool-name">Git</div><div class="tool-desc">Контроль версий</div></div>
+<span class="tool-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://nodejs.org/" target="_blank" class="tool-card">
+<div class="tool-icon">🟢</div>
+<div class="tool-info"><div class="tool-name">Node.js</div><div class="tool-desc">JavaScript runtime</div></div>
+<span class="tool-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://cursor.sh/" target="_blank" class="tool-card">
+<div class="tool-icon">✏️</div>
+<div class="tool-info"><div class="tool-name">Cursor</div><div class="tool-desc">AI-редактор кода</div></div>
+<span class="tool-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://github.com" target="_blank" class="tool-card">
+<div class="tool-icon">🐙</div>
+<div class="tool-info"><div class="tool-name">GitHub</div><div class="tool-desc">Хостинг репозиториев</div></div>
+<span class="tool-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://neon.tech" target="_blank" class="tool-card">
+<div class="tool-icon">🗄️</div>
+<div class="tool-info"><div class="tool-name">Neon.tech</div><div class="tool-desc">Serverless PostgreSQL</div></div>
+<span class="tool-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://dokploy.com" target="_blank" class="tool-card">
+<div class="tool-icon">🚢</div>
+<div class="tool-info"><div class="tool-name">Dokploy</div><div class="tool-desc">Деплой на VPS</div></div>
+<span class="tool-badge">БЕСПЛАТНО</span>
+</a>
+</div>
+</section>
+
+<hr class="divider">
+
+<section id="prompt">
+<h2 class="section-title"><span class="icon">💬</span> Золотой промпт</h2>
+<p class="prompt-intro">Скопируй промпт ниже и вставь в AntiGravity, Cursor или Claude. Замени текст в [КВАДРАТНЫХ СКОБКАХ] на свою идею - и AI проведёт тебя через весь процесс создания проекта от нуля до работающего сайта в интернете. Работает для любого SaaS: CRM, трекер задач, маркетплейс, соцсеть - что угодно.</p>
+
+<div class="prompt-block">
+<div class="prompt-header">
+<span class="prompt-label">💬 Золотой промпт для создания IT-стартапа</span>
+<button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Скопировать</button>
+</div>
+<div class="prompt-content" id="golden-prompt"># ЗОЛОТОЙ ПРОМПТ: [НАЗВАНИЕ ТВОЕГО ПРОЕКТА] (Production-Ready)
+
+Ты — Senior Fullstack Engineer и DevOps-эксперт. Твоя задача — провести меня через ВЕСЬ процесс создания [ОПИСАНИЕ ПРОЕКТА: например, "платформы для онлайн-курсов" или "трекера привычек с AI-аналитикой"], от установки софта до работающего сайта в интернете.
+
+Я начинаю с **полного нуля** на чистом компьютере (Windows). Используй этот документ как "Библию проекта" — здесь собран опыт двух AI-агентов и решения ВСЕХ проблем, с которыми столкнулись предыдущие разработчики.
+
+---
+
+## 📋 ТЕХНИЧЕСКИЙ СТЕК (СТРОГО СОБЛЮДАТЬ)
+
+- **Frontend:** Next.js 14 (App Router) + Tailwind CSS + Framer Motion
+- **Backend:** Next.js API Routes + Prisma ORM
+- **Database:** Neon.tech (Serverless PostgreSQL) — **НЕ Docker!**
+- **Hosting:** VPS (Hip-Hosting $3.2/мес или Hostinger) + Dokploy + Traefik
+- **Version Control:** GitHub
+- **AI Tools:** Google Antigravity / Cursor / Claude Code
+
+> **[АДАПТАЦИЯ]:** Если твой проект требует других технологий (например, Python/FastAPI вместо Next.js), замени этот раздел. Но **обязательно** оставь Neon (база) и Dokploy (деплой) — они универсальны.
+
+---
+
+## 🎨 ДИЗАЙН-СИСТЕМА
+
+**[ЗАМЕНИ НА СВОЙ СТИЛЬ]:**
+
+Для моего проекта используй стиль: **[например: "Минималистичный SaaS", "Яркий Gaming UI", "Корпоративный Dashboard"]**
+
+**Цветовая палитра:** [укажи 3-5 цветов, например: "#1E40AF (синий), #F59E0B (оранжевый), #FFFFFF (белый)"]
+**Шрифт:** [например: "Roboto", "Poppins", "Montserrat"]
+**Эффекты:** [например: "Тени и скругления", "Неоморфизм", "Градиенты"]
+
+**Запрещено:**
+- Использовать дефолтные стили без кастомизации
+- Копировать дизайн из шаблонов (создай уникальный)
+
+---
+
+## 🗂️ СТРУКТУРА БАЗЫ ДАННЫХ
+
+**[АДАПТИРУЙ ПОД СВОЙ ПРОЕКТ]:**
+
+Для Prediction Market мы использовали:
+- `User` (пользователи)
+- `Market` (рынки для ставок)
+- `Share` (купленные доли)
+
+**Для ТВОЕГО проекта** опиши сущности:
+
+Пример для "Платформы курсов":
+* User (студенты и преподаватели)
+* Course (курсы)
+* Lesson (уроки)
+* Progress (прогресс студента)
+
+**Инструкция для AI:** Создай Prisma Schema на основе этих сущностей. Используй типы `String`, `Int`, `Decimal`, `DateTime`, `Enum`.
+
+---
+
+## 🚀 ПОШАГОВАЯ ИНСТРУКЦИЯ
+
+### ШАГ 1: Подготовка окружения (Windows)
+
+#### 1.1 Установка Git
+1. Скачать Git for Windows: https://git-scm.com/download/win
+2. **КРИТИЧНО:** При установке выбрать:
+   - ✅ "Git from the command line and also from 3rd-party software" (добавление в PATH)
+   - ✅ "Use Windows' default console window" (для совместимости с PowerShell)
+   - ✅ "Checkout as-is, commit Unix-style line endings" (для кросс-платформенности)
+3. Проверка: Открыть PowerShell и выполнить `git --version`
+
+#### 1.2 Установка Node.js
+1. Скачать LTS версию: https://nodejs.org/
+2. Установить с дефолтными настройками
+3. Проверка: `node --version` и `npm --version`
+
+#### 1.3 Установка VS Code / Cursor
+- Рекомендую Cursor (https://cursor.sh/) — встроенная поддержка AI
+
+---
+
+### ШАГ 2: Регистрация сервисов
+
+#### 2.1 GitHub
+1. Создать аккаунт на https://github.com
+2. Создать новый репозиторий **[НАЗВАНИЕ-ПРОЕКТА]**
+3. Сделать его **Public** (для бесплатного деплоя)
+
+#### 2.2 Neon.tech (База данных)
+1. Зарегистрироваться на https://neon.tech (бесплатно)
+2. Создать новый проект
+3. **ВАЖНО:** Скопировать **Pooled Connection** строку (начинается с `postgresql://...`)
+4. Сохранить её — понадобится для .env
+
+---
+
+### ШАГ 3: Инициализация проекта
+
+#### 3.1 Создание Next.js приложения
+```bash
+npx create-next-app@latest [НАЗВАНИЕ-ПРОЕКТА]
+# Выбрать: TypeScript ✅, Tailwind ✅, App Router ✅
+cd [НАЗВАНИЕ-ПРОЕКТА]
+```
+
+#### 3.2 Установка зависимостей
+```bash
+npm install @prisma/client prisma framer-motion
+npm install -D @types/node
+# [АДАПТАЦИЯ]: Добавь свои библиотеки, например:
+# npm install recharts (для графиков)
+# npm install @stripe/stripe-js (для оплаты)
+```
+
+#### 3.3 Создание .env файла
+
+**КРИТИЧНО:** НЕ создавать через `echo` в PowerShell! Только вручную:
+1. Создать файл `.env` в корне проекта (правый клик → New File)
+2. Вставить:
+
+```env
+DATABASE_URL="postgresql://user:pass@host/db?sslmode=require"
+# [АДАПТАЦИЯ]: Добавь свои переменные:
+# STRIPE_SECRET_KEY="sk_test_..."
+# OPENAI_API_KEY="sk-..."
+```
+
+3. Заменить DATABASE_URL на свою строку из Neon.tech
+
+---
+
+### ШАГ 4: Настройка Prisma
+
+#### 4.1 Инициализация Prisma
+```bash
+npx prisma init
+```
+
+#### 4.2 Создание схемы базы данных
+
+Файл `prisma/schema.prisma`:
+
+**[ЗАМЕНИ НА СВОЮ СХЕМУ]:**
+
+```prisma
+// Пример для "Платформы курсов":
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  role      UserRole @default(STUDENT)
+  courses   Course[]
+  progress  Progress[]
+}
+
+model Course {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  price       Decimal
+  teacherId   String
+  teacher     User     @relation(fields: [teacherId], references: [id])
+  lessons     Lesson[]
+}
+
+model Lesson {
+  id        String   @id @default(cuid())
+  title     String
+  videoUrl  String
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id])
+}
+
+model Progress {
+  id        String   @id @default(cuid())
+  userId    String
+  lessonId  String
+  completed Boolean  @default(false)
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+enum UserRole {
+  STUDENT
+  TEACHER
+  ADMIN
+}
+```
+
+#### 4.3 Применение миграций
+```bash
+npx prisma db push
+npx prisma generate
+```
+
+#### 4.4 Создание Seed-скрипта
+
+**ПРОБЛЕМА:** TypeScript seed требует отдельного `tsconfig.json`
+
+Создать `prisma/tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2020",
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
+}
+```
+
+Создать `prisma/seed.ts`:
+```typescript
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
+async function main() {
+  // [АДАПТАЦИЯ]: Создай тестовые данные для СВОЕГО проекта
+  await prisma.course.createMany({
+    data: [
+      {
+        title: "Next.js Мастер-класс",
+        description: "Полный курс по Next.js 14",
+        price: 4999,
+        teacherId: "..." // ID учителя
+      },
+      // Добавь еще курсы
+    ]
+  })
+}
+
+main()
+  .catch(console.error)
+  .finally(() => prisma.$disconnect())
+```
+
+Добавить в `package.json`:
+```json
+"prisma": {
+  "seed": "ts-node --project prisma/tsconfig.json prisma/seed.ts"
+}
+```
+
+Запустить:
+```bash
+npx prisma db seed
+```
+
+---
+
+### ШАГ 5: Frontend
+
+**[АДАПТАЦИЯ]:** Создай страницы под свой проект:
+
+Для "Платформы курсов":
+```
+app/
+├── page.tsx (Каталог курсов)
+├── course/[id]/page.tsx (Страница курса)
+├── dashboard/page.tsx (Личный кабинет)
+components/
+├── CourseCard.tsx
+├── VideoPlayer.tsx
+├── ProgressBar.tsx
+```
+
+Используй дизайн-систему из Шага "Дизайн-система"
+
+---
+
+### ШАГ 6: Backend (API Routes)
+
+**[АДАПТАЦИЯ]:** Создай API под свою логику:
+
+Для "Платформы курсов":
+* `app/api/courses/route.ts` (GET список курсов)
+* `app/api/courses/[id]/route.ts` (GET детали курса)
+* `app/api/courses/[id]/enroll/route.ts` (POST запись на курс)
+* `app/api/progress/route.ts` (POST обновление прогресса)
+
+**КРИТИЧНО:** Используй Prisma транзакции для сложных операций:
+```typescript
+await prisma.$transaction(async (tx) => {
+  // Списать деньги
+  // Записать на курс
+  // Создать прогресс
+})
+```
+
+---
+
+### ШАГ 7: Git Setup
+
+```bash
+git init
+git add .
+git commit -m "Initial commit: [НАЗВАНИЕ ПРОЕКТА]"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/[НАЗВАНИЕ-ПРОЕКТА].git
+git push -u origin main
+```
+
+---
+
+### ШАГ 8: Деплой на VPS
+
+#### 8.1 Покупка VPS
+1. Зарегистрироваться на Hip-Hosting или Hostinger
+2. Выбрать тариф: 2 vCPU, 2GB RAM ($3-5/мес)
+3. ОС: Ubuntu 24.04 LTS
+4. Сохранить IP-адрес и root-пароль
+
+#### 8.2 Установка Dokploy
+SSH в сервер:
+```bash
+ssh root@YOUR_IP
+```
+
+Установить Dokploy:
+```bash
+curl -sSL https://dokploy.com/install.sh | sh
+```
+
+Открыть в браузере: `http://YOUR_IP:3000`
+
+#### 8.3 Настройка проекта в Dokploy
+1. Создать проект "[НАЗВАНИЕ ПРОЕКТА]"
+2. Добавить Application
+3. Подключить GitHub репозиторий
+4. **КРИТИЧНО:** В Environment Variables добавить:
+
+```
+DATABASE_URL=postgresql://... (из Neon)
+# [АДАПТАЦИЯ]: Добавь свои переменные (API ключи и т.д.)
+```
+
+#### 8.4 Фикс для Next.js
+
+**ПРОБЛЕМА:** Next.js слушает только `localhost`, Docker его не видит
+
+Изменить `package.json`:
+```json
+"scripts": {
+  "start": "next start -H 0.0.0.0"
+}
+```
+
+Закоммитить и запушить:
+```bash
+git add package.json
+git commit -m "fix: bind Next.js to 0.0.0.0 for Docker"
+git push
+```
+
+#### 8.5 Фикс Traefik (КРИТИЧНО!)
+
+**ПРОБЛЕМА:** Dokploy иногда не создает Traefik сервис
+
+Проверить:
+```bash
+ssh root@YOUR_IP
+docker service ls | grep traefik
+```
+
+Если пусто — создать вручную:
+```bash
+docker service create \
+  --name dokploy-traefik \
+  --network dokploy-network \
+  --publish published=80,target=80 \
+  --publish published=443,target=443 \
+  --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
+  --mount type=bind,source=/etc/dokploy/traefik/traefik.yml,target=/etc/traefik/traefik.yml \
+  --mount type=bind,source=/etc/dokploy/traefik/dynamic,target=/etc/dokploy/traefik/dynamic \
+  traefik:v3.6.1
+```
+
+#### 8.6 Получение домена
+Dokploy автоматически создаст домен вида:
+`your-app-xxxxx-YOUR-IP.traefik.me`
+
+Открыть в браузере — сайт работает!
+
+---
+
+## ⚠️ ИЗВЕСТНЫЕ ПРОБЛЕМЫ И РЕШЕНИЯ
+
+**Проблема 1:** `.env` файл искажается в PowerShell
+**Решение:** Создавать вручную в редакторе, НЕ через `echo`
+
+**Проблема 2:** Prisma Seed не запускается
+**Решение:** Создать `prisma/tsconfig.json` с `"module": "commonjs"`
+
+**Проблема 3:** ERR_CONNECTION_REFUSED при деплое
+**Решение:**
+1. Проверить `package.json` → `"start": "next start -H 0.0.0.0"`
+2. Проверить Traefik: `docker service ls`
+3. Если нет — запустить команду из Шага 8.5
+
+**Проблема 4:** Prisma Studio показывает пустую базу
+**Решение:** Проверить через API (`curl localhost:3000/api/...`), обновить Studio (F5)
+
+---
+
+## 🎯 ТВОЯ ЗАДАЧА СЕЙЧАС
+1. Подтверди, что принял этот "Золотой Стандарт"
+2. Спроси меня детали про МОЙ проект: [НАЗВАНИЕ], функции, целевую аудиторию
+3. Веди меня пошагово, применяя ВСЕ правила из этого документа
+4. Если я застряну — используй решения из раздела "Известные проблемы"
+
+**Правило:** Не переходи к следующему шагу, пока я не скажу "Готово".
+
+**Начинай!**</div>
+<button class="prompt-toggle" onclick="togglePrompt(this)">▼ Показать полностью</button>
+</div>
+</section>
+
+<hr class="divider">
+
+<section id="links">
+<h2 class="section-title"><span class="icon">🔗</span> Все ссылки</h2>
+<div class="links-grid">
+<a href="https://antigravity.google/" target="_blank" class="link-card">
+<div class="link-icon">⚡</div>
+<div class="link-info"><div class="link-name">AntiGravity</div><div class="link-desc">AI IDE от Google</div></div>
+<span class="link-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://git-scm.com/download/win" target="_blank" class="link-card">
+<div class="link-icon">📦</div>
+<div class="link-info"><div class="link-name">Git</div><div class="link-desc">Система контроля версий</div></div>
+<span class="link-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://nodejs.org/" target="_blank" class="link-card">
+<div class="link-icon">🟢</div>
+<div class="link-info"><div class="link-name">Node.js</div><div class="link-desc">JavaScript runtime</div></div>
+<span class="link-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://cursor.sh/" target="_blank" class="link-card">
+<div class="link-icon">✏️</div>
+<div class="link-info"><div class="link-name">Cursor</div><div class="link-desc">AI-редактор кода</div></div>
+<span class="link-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://github.com" target="_blank" class="link-card">
+<div class="link-icon">🐙</div>
+<div class="link-info"><div class="link-name">GitHub</div><div class="link-desc">Хостинг репозиториев</div></div>
+<span class="link-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://neon.tech" target="_blank" class="link-card">
+<div class="link-icon">🗄️</div>
+<div class="link-info"><div class="link-name">Neon.tech</div><div class="link-desc">Serverless PostgreSQL</div></div>
+<span class="link-badge">БЕСПЛАТНО</span>
+</a>
+<a href="https://dokploy.com" target="_blank" class="link-card">
+<div class="link-icon">🚢</div>
+<div class="link-info"><div class="link-name">Dokploy</div><div class="link-desc">Деплой на VPS</div></div>
+<span class="link-badge">БЕСПЛАТНО</span>
+</a>
+</div>
+</section>
+
+<hr class="divider">
+
+<div class="cta-block">
+<div class="cta-text">Пошаговый план по&nbsp;выходу<br>на&nbsp;первые <span class="grad">100к в&nbsp;ИИ</span> в&nbsp;2026</div>
+<a href="https://t.me/mastodont_aibot?start=agency" target="_blank" class="cta-btn">Забрать план</a>
+</div>
+
+<footer class="footer">
+<div class="footer-brand">МАСТОДОНТ</div>
+<div class="footer-tagline">AI и нейросети - просто, по делу</div>
+<button class="footer-yt" onclick="copyText('Мастодонт',this)" title="Скопировать название канала">YouTube: Мастодонт</button>
+</footer>
+
+</div>
+
+<script>
+function copyText(text,btn){
+navigator.clipboard.writeText(text).then(()=>{
+const o=btn.textContent;btn.textContent='\u2713 Скопировано!';
+setTimeout(()=>btn.textContent=o,2000);
+});
+}
+function togglePrompt(btn){
+const content=document.querySelector('.prompt-content');
+content.classList.toggle('expanded');
+btn.textContent=content.classList.contains('expanded')?'▲ Свернуть':'▼ Показать полностью';
+}
+function copyPrompt(btn){
+const el=document.getElementById('golden-prompt');
+navigator.clipboard.writeText(el.textContent).then(()=>{
+btn.classList.add('copied');btn.innerHTML='<span>\u2713</span> Скопировано!';
+setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML='<span>📋</span> Скопировать'},2000);
+});
+}
+</script>
+</body>
+</html>
